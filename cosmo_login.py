@@ -279,8 +279,8 @@ def main() -> None:
         print(f"Error requesting code: {e}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"a login code was sent to {email}", file=sys.stderr)
-    code = _prompt("code: ")
+    print(f"登入驗證碼已發送至: {email}", file=sys.stderr)
+    code = _prompt("輸入六位數 OTP Code: ")
 
     try:
         account = verify_otp_and_login(email, code, AUTH_PATH)
@@ -289,9 +289,12 @@ def main() -> None:
         sys.exit(1)
 
     print(f"saved tokens to {AUTH_PATH}", file=sys.stderr)
-    print("請不要公開發布或洩漏下列Token並妥善保管!")
+    print("=========================================")
+    print("請勿公開發布或洩漏下列JWT Token並妥善保管此參數!")
+    print("=========================================")
     print("\n")
     print(account.get("credentials").get("refreshToken"))
+    print("\n")
 
 
 if __name__ == "__main__":
