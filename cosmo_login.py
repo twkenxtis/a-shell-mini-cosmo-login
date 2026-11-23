@@ -289,10 +289,9 @@ def main() -> None:
         sys.exit(1)
 
     print(f"saved tokens to {AUTH_PATH}", file=sys.stderr)
-    # 僅將 JSON 響應輸出至 stdout，供 iOS Shortcuts 取得返回數據
+    print("請不要公開發布或洩漏下列Token並妥善保管!")
     print("\n")
-    print(account.get("credentials").get("accessToken"))
-    print("\n")
+    print(account.get("credentials").get("refreshToken"))
 
 
 if __name__ == "__main__":
